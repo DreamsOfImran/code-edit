@@ -56,3 +56,11 @@ body {
   border-bottom-left-radius: .5rem;
   overflow: hidden;
 }
+
+.quote {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  font-size: 2rem;
+}

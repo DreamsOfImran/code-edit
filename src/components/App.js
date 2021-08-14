@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
+import { quotes } from '../utils/quotes'
 import Editor from './Editor'
 
+const randomInt = Math.floor(Math.random() * quotes.length)
+
 const App = () => {
-  const [html, setHtml] = useLocalStorage('')
-  const [css, setCss] = useLocalStorage('')
-  const [js, setJs] = useLocalStorage('')
+  const [html, setHtml] = useLocalStorage('html', '')
+  const [css, setCss] = useLocalStorage('css', '')
+  const [js, setJs] = useLocalStorage('js', '')
   const [srcDoc, setSrcDoc] = useState('')
 
   useEffect(() => {
@@ -45,14 +48,20 @@ const App = () => {
         />
       </div>
       <div className="pane">
-        <iframe
-          srcDoc={srcDoc}
-          title="output"
-          sandbox="allow-scripts"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-        />
+        {html || css || js ? (
+          <iframe
+            srcDoc={srcDoc}
+            title="output"
+            sandbox="allow-scripts"
+            frameBorder="0"
+            width="100%"
+            height="100%"
+          />
+        ) : (
+          <div className="quote">
+            {quotes[randomInt]}
+          </div>
+        )}
       </div>
     </>
   )
