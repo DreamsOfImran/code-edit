@@ -63,4 +63,6 @@ body {
   width: 100%;
   align-items: center;
   font-size: 2rem;
+  background-color: hsl(225, 6%, 25%);
+  color: hsl(225, 6%, 13%);
 }
